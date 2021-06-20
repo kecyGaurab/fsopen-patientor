@@ -13,6 +13,7 @@ const App = () => {
   const [, dispatch] = useStateValue();
   React.useEffect(() => {
     void axios.get<void>(`${apiBaseUrl}/ping`);
+    void axios.get<void>(`${apiBaseUrl}/diagnosis`);
 
     const fetchPatientList = async () => {
       try {
