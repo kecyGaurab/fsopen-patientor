@@ -9,16 +9,21 @@ router.get('/', (_req, res) => {
 
 
 router.post('/', (req, res) => {
-  const { name, dateOfBirth, occupation, gender, ssn } = req.body;
-  const newPatientEntry = patientService.addPatient(
-   { name,
-    dateOfBirth,
-    occupation,
-    gender,
-    ssn
+  try {
+    const { name, dateOfBirth, occupation, gender, ssn } = req.body;
+    const newPatientEntry = patientService.addPatient(
+     { name,
+      dateOfBirth,
+      occupation,
+      gender,
+      ssn
+    }
+    );
+    res.json(newPatientEntry);
+    
+  }catch (error) {
+      res.status(400).send(error.message)
   }
-  );
-  res.json(newPatientEntry);
 });
 
 
